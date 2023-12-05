@@ -22,7 +22,7 @@ Once downloaded, extract the contents of the zip into the ```addons``` folder. Y
 Your Project
     addons
         stopwatch
-            ...stopwatch plugin files
+            ...plugin files
         ...other plugins
     ...other files
 ```
