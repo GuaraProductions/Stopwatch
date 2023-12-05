@@ -29,7 +29,11 @@ Your Project
 
 # Documentation
 
-In the future, I will make a video demonstration on how to use this plugin.
+In the future, I will make a video demonstration on how to use this plugin. for now, here is the documentation that already exist in the code.
+
+Obs.: You can access this documentation, by clicking the stopwatch logo with right-click on mouse button.
+
+![image](https://github.com/GuaraProductions/Stopwatch/assets/9157977/0fa3a20a-8f0c-4d0a-a4ef-47c555abd8e8)
 
 ## Properties
  - String process_callback [padrão: "Idle"]
