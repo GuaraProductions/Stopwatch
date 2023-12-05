@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://examples/ClockTest.gd" id="1_0pvp2"]
 [ext_resource type="Script" path="res://addons/stopwatch/Stopwatch.gd" id="2_u6g4d"]
-[ext_resource type="StyleBox" uid="uid://b2cvg5uddsgbx" path="res://addons/stopwatch/ButtonStyle.tres" id="3_m1n2q"]
+[ext_resource type="StyleBox" uid="uid://b2cvg5uddsgbx" path="res://examples/ButtonStyle.tres" id="3_m1n2q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_71mh4"]
 font_size = 108

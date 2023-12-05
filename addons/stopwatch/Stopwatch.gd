@@ -7,7 +7,7 @@ extends Node
 ## Use this node to measure the total amount of time elapsed. You can both reset the time and also specify to start
 ## the time when the stopwatch enters the scene tree
 
-## Emitted when the stopwatch is requested to reset, returns the timer before it is resetted
+## Emitted when the stopwatch is requested to reset, returns the elapsed time before it is resetted
 signal time_resetted(time: float)
 ## Emitted when the pause status is changed, returns if the stopwatch is currently paused or unpaused
 signal pause_state_changed(status: bool)
