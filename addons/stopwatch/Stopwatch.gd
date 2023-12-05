@@ -86,12 +86,12 @@ static func get_time_dictionary_from_seconds(total_time_in_seconds: float) -> Di
 	}
 
 ## Formats the given time value into a string based on the specified format. the "format" is a string containing placeholders for day, hour, minute, second, and millisecond.[br] [br]
-## Placeholders: "dd" for day, "hh" for hour, "MM" for minutes, "ss" for seconds, "mm" for milliseconds.[br] [br]
+## Placeholders: "{dd}" for day, "{hh}" for hour, "{MM}" for minutes, "{ss}" for seconds, "{mmm}" for milliseconds.[br] [br]
 ## Returns:[br] [br]
 ##   String: The formatted time string based on the provided format.[br] [br]
 ## Example:[br] [code]
 ##   var time: float = 1234.567 [br] [br]
-##   var formatted_time_str: String = format_time("dd:hh:MM:ss:mm")[br]
+##   var formatted_time_str: String = format_time("{dd}:{hh}:{MM}:{ss}:{mmm}")[br]
 ##   print("Formatted Time:", formatted_time_str)[br] [/code] [br]
 ## This example will output a string representing the time as "00:00:20:34:567", where:[br] [br]
 ##   - 00 days,[br]
