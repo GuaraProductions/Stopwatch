@@ -101,7 +101,7 @@ Example:
 ```gdscript
 
   @export var stopwatch : Stopwatch
-
+  ...
   var time: float = 1234.567
   var formatted_time_str: String = stopwatch.format_time("{dd}:{hh}:{MM}:{ss}:{mmm}")
   print("Formatted Time:", formatted_time_str)
