@@ -90,18 +90,22 @@ pauses the execution of the stopwatch if true
 ### String format_time(format: String)
 
 Formats the given time value into a string based on the specified format. the "format" is a string containing placeholders for day, hour, minute, second, and millisecond.
- 
-Placeholders: "dd" for day, "hh" for hour, "MM" for minutes, "ss" for seconds, "mm" for milliseconds.
+
+Placeholders: "{dd}" for day, "{hh}" for hour, "{MM}" for minutes, "{ss}" for seconds, "{mmm}" for milliseconds.
  
 Returns:
  
 String: The formatted time string based on the provided format.
  
 Example:
- 
-  var time: float = 1234.567 [br] [br]
-  var formatted_time_str: String = format_time("dd:hh:MM:ss:mm")[br]
-  print("Formatted Time:", formatted_time_str)[br]  
+```gdscript
+
+  @export var stopwatch : Stopwatch
+
+  var time: float = 1234.567
+  var formatted_time_str: String = stopwatch.format_time("{dd}:{hh}:{MM}:{ss}:{mmm}")
+  print("Formatted Time:", formatted_time_str)
+```
 This example will output a string representing the time as "00:00:20:34:567", where:
  
 - 00 days,
