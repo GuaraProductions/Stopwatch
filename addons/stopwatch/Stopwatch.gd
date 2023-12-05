@@ -90,8 +90,10 @@ static func get_time_dictionary_from_seconds(total_time_in_seconds: float) -> Di
 ## Returns:[br] [br]
 ##   String: The formatted time string based on the provided format.[br] [br]
 ## Example:[br] [code]
+##   @export var stopwatch : Stopwatch
+##   ...
 ##   var time: float = 1234.567 [br] [br]
-##   var formatted_time_str: String = format_time("{dd}:{hh}:{MM}:{ss}:{mmm}")[br]
+##   var formatted_time_str: String = stopwatch.format_time("{dd}:{hh}:{MM}:{ss}:{mmm}")[br]
 ##   print("Formatted Time:", formatted_time_str)[br] [/code] [br]
 ## This example will output a string representing the time as "00:00:20:34:567", where:[br] [br]
 ##   - 00 days,[br]
