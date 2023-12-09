@@ -4,7 +4,7 @@
 
 A utility stopwatch node for Godot 4.x
 
-https://github.com/GuaraProductions/Stopwatch/assets/9157977/5346bca8-c487-4296-a03a-4bb875a9efc3
+https://github.com/GuaraProductions/Stopwatch/assets/9157977/10b0d6cb-3478-4e51-bf92-4ec04cb15217
 
 **Current version: 4.2**
 
