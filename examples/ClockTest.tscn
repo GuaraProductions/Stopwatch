@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct3amptwpsh78"]
+[gd_scene load_steps=6 format=3 uid="uid://ct3amptwpsh78"]
 
 [ext_resource type="Script" path="res://examples/ClockTest.gd" id="1_0pvp2"]
 [ext_resource type="Script" path="res://addons/stopwatch/Stopwatch.gd" id="2_u6g4d"]
@@ -7,7 +7,11 @@
 [sub_resource type="LabelSettings" id="LabelSettings_71mh4"]
 font_size = 108
 
-[node name="ClockTest" type="Control" node_paths=PackedStringArray("clock_label", "stopwatch", "start_button")]
+[sub_resource type="LabelSettings" id="LabelSettings_8ssp0"]
+font_size = 25
+outline_size = 2
+
+[node name="ClockTest" type="Control" node_paths=PackedStringArray("clock_label", "stopwatch", "start_button", "checkpoint_list", "checkpoint_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,12 +22,20 @@ script = ExtResource("1_0pvp2")
 clock_label = NodePath("Label")
 stopwatch = NodePath("Stopwatch")
 start_button = NodePath("Buttons/List/Start")
+checkpoint_list = NodePath("Checkpoints/VBoxContainer/ScrollContainer/List")
+checkpoint_label = NodePath("Checkpoints/VBoxContainer/Checkpoints")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -74.0
+offset_right = 216.0
+offset_bottom = 74.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "00:00:00"
@@ -35,13 +47,53 @@ vertical_alignment = 1
 script = ExtResource("2_u6g4d")
 pause_on_reset = true
 
-[node name="Buttons" type="MarginContainer" parent="."]
+[node name="Checkpoints" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 11
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_left = -25.0
+grow_horizontal = 0
 grow_vertical = 2
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Checkpoints"]
+layout_mode = 2
+
+[node name="Checkpoints" type="Label" parent="Checkpoints/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Checkpoints:"
+label_settings = SubResource("LabelSettings_8ssp0")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Checkpoints/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="List" type="VBoxContainer" parent="Checkpoints/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="Buttons" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -233.5
+offset_top = -125.0
+offset_right = 233.5
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_constants/margin_bottom = 55
 
 [node name="List" type="HBoxContainer" parent="Buttons"]
@@ -56,12 +108,21 @@ theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = ExtResource("3_m1n2q")
 text = "Start"
 
+[node name="Lap" type="Button" parent="Buttons/List"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("3_m1n2q")
+text = "Lap"
+
 [node name="Reset" type="Button" parent="Buttons/List"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = ExtResource("3_m1n2q")
 text = "Reset"
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="pause_state_changed" from="Stopwatch" to="." method="_on_stopwatch_pause_state_changed"]
 [connection signal="pressed" from="Buttons/List/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Buttons/List/Lap" to="." method="_on_lap_pressed"]
 [connection signal="pressed" from="Buttons/List/Reset" to="." method="_on_reset_pressed"]
