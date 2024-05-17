@@ -25,6 +25,8 @@ var paused := true : set = _set_paused, get = _get_paused ## Determines if the e
 var checkpoints : Array[Array] : get = get_checkpoints_array, set = set_checkpoints_array ## An array containing all the times a checkpoint was requested. The time is kept within an Array with two positions, the first one is the elapsed time when the checkpoint was requested, and the second position contains the difference between the current checkpoint and the previous one.
 
 var __process_time_in_the_physics_engine := false
+var __configured := false
+var __last_formatted_time : String = ""
 
 func _ready():
 	
@@ -43,6 +45,7 @@ func set_checkpoints_array(array: Array) -> void:
 
 ## Configure if the stopwatch is paused or not.
 func _set_paused(is_paused: bool) -> void:
+	
 	paused = is_paused
 	pause_state_changed.emit(paused)
 	set_process(not paused and not __process_time_in_the_physics_engine)
@@ -153,7 +156,12 @@ static func get_time_dictionary_from_seconds(total_time_in_seconds: float) -> Di
 ##
 ## [b]Note:[/b] There is a static version of this function called [method Stopwatch.get_time_as_formatted_string]
 func get_elapsed_time_as_formatted_string(format: String) -> String:
-	return Stopwatch.get_time_as_formatted_string(elapsed_time, format)
+	
+	if not paused or not __configured:
+		__last_formatted_time = Stopwatch.get_time_as_formatted_string(elapsed_time, format)
+		__configured = true
+	
+	return __last_formatted_time
 	
 ## This function is a static version of the function [method Stopwatch.get_elapsed_time_as_formatted_string]. It works
 ## in the same way, with the only differece is that here you have to provide the parameter [param time_in_seconds]
@@ -178,19 +186,31 @@ static func get_time_as_formatted_string(time_in_seconds: float, format: String)
 	
 	var milliseconds := int(fractional_part * 1000)
 	
-	if format.contains("{dd}"):
-		format = format.replace("{dd}", str(days).pad_zeros(2))
-	if format.contains("{hh}"):
-		format = format.replace("hh", str(hours).pad_zeros(2))
-	if format.contains("{MM}"):
-		format = format.replace("{MM}", str(minutes).pad_zeros(2))
-	if format.contains("{ss}"):
-		format = format.replace("{ss}", str(seconds).pad_zeros(2))
-	if format.contains("{mmm}"):
-		format = format.replace("{mmm}", str(milliseconds).pad_zeros(3))
-
-	formatted_time = format
-	
+	var i : int = 0
+	while i < format.length():
+		if format[i] == "{":
+			var idx : int = format.find("}",i)
+			
+			if idx == -1:
+				break
+			
+			match format[i+1]:
+				"d":
+					formatted_time += str(days).pad_zeros(idx-i-1)
+				"h":
+					formatted_time += str(hours).pad_zeros(idx-i-1)
+				"m":
+					formatted_time += str(int(fractional_part * pow(10,idx-i-1))).pad_zeros(idx-i-1)
+				"M":
+					formatted_time += str(minutes).pad_zeros(idx-i-1)
+				"s":
+					formatted_time += str(seconds).pad_zeros(idx-i-1)
+					
+			i = idx + 1
+		else:
+			formatted_time += format[i]
+			i += 1
+			
 	return formatted_time
 
 ## Reset the current elapsed time.

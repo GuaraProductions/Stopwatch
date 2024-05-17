@@ -11,8 +11,8 @@ extends Control
 func _ready():
 	checkpoint_label.visible = false
 
-func _process(_delta) -> void:
-	clock_label.text = stopwatch.get_elapsed_time_as_formatted_string("{MM}:{ss}:{mmm}")
+func _process(_delta: float) -> void:
+	clock_label.text = stopwatch.get_elapsed_time_as_formatted_string("{MM}:{ss}:{mmmm}")
 
 func _on_start_pressed() -> void:
 	stopwatch.toggle_pause()
