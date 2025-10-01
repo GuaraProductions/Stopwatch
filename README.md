@@ -6,7 +6,7 @@ A utility stopwatch node for Godot 4.x
 
 https://github.com/GuaraProductions/Stopwatch/assets/9157977/10b0d6cb-3478-4e51-bf92-4ec04cb15217
 
-### **Godot version: 4.2.2**
+### **Godot version: 4.5**
 ### **Current version: 1.1.1**
 
 This plugin encapsulates the functionality of a stopwatch, offering advanced features beyond basic time measurement. It accurately calculates the duration between activation and deactivation, providing the ability to pause the stopwatch and reset the timer as needed. Additionally, the plugin allows users to retrieve the current time in a formatted string, facilitating seamless integration with text nodes for easy display.
