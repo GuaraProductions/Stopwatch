@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ct3amptwpsh78"]
+[gd_scene load_steps=5 format=3 uid="uid://ct3amptwpsh78"]
 
-[ext_resource type="Script" path="res://examples/ClockTest.gd" id="1_0pvp2"]
-[ext_resource type="Script" path="res://addons/stopwatch/Stopwatch.gd" id="2_u6g4d"]
-[ext_resource type="StyleBox" uid="uid://b2cvg5uddsgbx" path="res://examples/ButtonStyle.tres" id="3_m1n2q"]
+[ext_resource type="Script" uid="uid://18p2yognl5cj" path="res://examples/ClockTest.gd" id="1_0pvp2"]
+[ext_resource type="Script" uid="uid://c6ry1dwkeeeq0" path="res://addons/stopwatch/Stopwatch.gd" id="2_u6g4d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_71mh4"]
 font_size = 108
@@ -105,19 +104,16 @@ alignment = 1
 [node name="Start" type="Button" parent="Buttons/List"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = ExtResource("3_m1n2q")
 text = "Start"
 
 [node name="Lap" type="Button" parent="Buttons/List"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = ExtResource("3_m1n2q")
 text = "Lap"
 
 [node name="Reset" type="Button" parent="Buttons/List"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = ExtResource("3_m1n2q")
 text = "Reset"
 
 [node name="Timer" type="Timer" parent="."]
