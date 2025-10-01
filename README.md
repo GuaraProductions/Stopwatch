@@ -48,7 +48,7 @@ Obs.: You can access this documentation, by clicking the stopwatch logo with rig
  - bool autostart [padrão: false]
  - bool pause_on_reset [padrão: false]
 
-## Métodos
+## Methods
 
  - Array add_checkpoint()
  - Dictionary get_elapsed_time_as_dictionary()
@@ -72,38 +72,31 @@ Emitted when the pause status is changed, returns if the stopwatch is currently 
 
 Emitted when the stopwatch is requested to reset, returns the elapsed time before it is resetted.
 
-
 ## Properties description
 
 ### String process_callback [padrão: "Idle"]
 
 Determines weather the processing of elapsed time is calculated during process(_process) or during physics frames(_physics_process) Obs.: It only takes effect when the node first enters the SceneTree.
 
-
 ### bool autostart [padrão: false]
 
 Determines if the Stopwatch start after the node is ready or not.
-
 
 ### bool pause_on_reset [padrão: false]
 
 Determines if the Stopwatch pauses when is resetted.
 
-
 ### float elapsed_time [padrão: 0.0] [propriedade: setter, getter]
 
 amount of seconds elapsed since start.
-
 
 ### bool paused [padrão: true] [propriedade: setter, getter]
 
 Determines if the execution of the stopwatch is paused or not.
 
-
 ### Array[Array] checkpoints [propriedade: setter, getter]
 
 An array containing all the times a checkpoint was requested. The time is kept within an Array with two positions, the first one is the elapsed time when the checkpoint was requested, and the second position contains the difference between the current checkpoint and the previous one.
-
 
 ## Methods description
 
@@ -113,11 +106,9 @@ Add a checkpoint to the stopwatch based on its elapsed time, returns an array wi
  
 Note : this function does not take into account if the stopwatch is paused or not, so keep this in mind when invoking this function.
 
-
 ### Dictionary get_elapsed_time_as_dictionary()
 
 Get the elapsed time since the stopwatch's start time and return a dictionary representing the time in hours, minutes, seconds, and milliseconds.
-
 
 ### String get_elapsed_time_as_formatted_string(format: String)
 
@@ -125,11 +116,9 @@ Formats the current elapsed time value into a string based on the specified form
  
 Placeholders: "{dd}" for day, "{hh}" for hour, "{MM}" for minutes, "{ss}" for seconds, "{mmm}" for milliseconds.
  
-Returns:
+**Returns**: String: The formatted time string based on the provided format.
  
-String: The formatted time string based on the provided format.
- 
-Example:
+#### Example:
 
 ```gdscript
   @export var stopwatch : Stopwatch
