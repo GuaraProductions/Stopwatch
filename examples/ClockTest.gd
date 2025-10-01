@@ -18,6 +18,7 @@ func _on_start_pressed() -> void:
 	stopwatch.toggle_pause()
 
 func _on_reset_pressed() -> void:
+	clock_label.text = stopwatch.get_elapsed_time_as_formatted_string("00:00:0000")
 	stopwatch.reset()
 	checkpoint_label.visible = false
 	for i in checkpoint_list.get_children():
