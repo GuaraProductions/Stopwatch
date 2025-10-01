@@ -165,7 +165,7 @@ Zera o tempo decorrido atual.
 ### void toggle_pause()
 Alterna o estado de pausa do cronômetro, dependendo do estado anterior.
 
-Licença
+### Licença
 Este projeto está licenciado sob a licença MIT.
 
 
